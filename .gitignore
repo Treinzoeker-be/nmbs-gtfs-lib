@@ -10,6 +10,7 @@ run/
 
 ### Maven ###
 dependency-reduced-pom.xml
+target/
 
 
 ### Eclipse ###

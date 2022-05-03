@@ -2,13 +2,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <name>ns-iff-lib</name>
-    <description>A Java library to load GTFS feeds from the </description>
-    <url>https://github.com/treinzoeker-be/ns-iff-lib</url>
+    <name>nmbs-gtfs-lib</name>
+    <description>A Java library to load GTFS feeds from the Belgian national railway agency NMBS/SNCB.</description>
+    <url>https://github.com/treinzoeker-be/nmbs-gtfs-lib</url>
 
     <groupId>be.treinzoeker</groupId>
     <artifactId>nmbs-gtfs-lib</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>0.1.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -159,7 +159,7 @@
                 <directory>${project.basedir}/src/main/resources/</directory>
                 <filtering>true</filtering>
                 <includes>
-                    <include>*</include>
+                    <include>**/*</include>
                 </includes>
             </resource>
         </resources>

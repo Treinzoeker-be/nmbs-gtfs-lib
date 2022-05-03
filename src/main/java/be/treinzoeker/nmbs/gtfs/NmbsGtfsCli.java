@@ -1,5 +1,7 @@
 package be.treinzoeker.nmbs.gtfs;
 
+import be.treinzoeker.nmbs.gtfs.storage.H2Storage;
+
 import java.io.FileOutputStream;
 import java.net.URL;
 import java.nio.channels.Channels;
@@ -19,7 +21,7 @@ public class NmbsGtfsCli {
         if (args.length >= 1) {
             gtfsPath = args[0];
         } else {
-            System.out.println("Download latest NMBS GTFS file...");
+            System.out.println("Downloading latest NMBS GTFS file...");
             Path zipPath = Path.of("./data/nmbs-latest.zip");
             if (Files.exists(zipPath)) {
                 Files.delete(zipPath);
@@ -35,5 +37,6 @@ public class NmbsGtfsCli {
         ZipFile zip = new ZipFile(gtfsPath);
         NmbsGtfsFeed feed = new NmbsGtfsFeed();
         feed.loadFromZipFile(zip);
+        feed.saveToStorage(new H2Storage(Path.of("./data/gtfs")));
     }
 }

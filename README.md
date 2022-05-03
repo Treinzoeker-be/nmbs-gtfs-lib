@@ -28,7 +28,30 @@ The feed does (consistently) include a 'calendar' file, but the actual values ar
 and 'end_date' are equal for all services. In my understanding, it is safe to use 'calendar_dates' and ignore 'calendar'.
 
 ## Usage
-nmbs-gtfs-lib can be used as a library in your own code. There is a command-line JAR available, but it's primary use is
-just to test GTFS archives.
+nmbs-gtfs-lib can be used as a library in your own code. There is a command-line JAR available, but its primary use is
+just to test GTFS archives. When using the CLI, the feed will be stored into an H2 database found (./data/gtfs.mv.db).
 
 We use Maven as dependency manager, and publish artifacts to a publicly available repository.
+
+```xml
+<repositories>
+    <repository>
+        <id>treinzoeker-be</id>
+        <url>https://repo.treinzoeker.be/repo/</url>
+    </repository>
+</repositories>
+```
+
+```xml
+<dependencies>
+    <dependency>
+        <groupId>be.treinzoeker</groupId>
+        <artifactId>nmbs-gtfs-lib</artifactId>
+        <version>0.1.0-SNAPSHOT</version>
+    </dependency>
+</dependencies>
+```
+
+## Pull Requesting and ToDo
+The library is based on our (current) needs. We're planning on implenting feed validation somewhere in the near future.
+Feel free to open a pull request if you'd like to contribute changes.

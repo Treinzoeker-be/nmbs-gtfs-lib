@@ -11,6 +11,7 @@ import be.treinzoeker.nmbs.gtfs.model.StopTimeOverride;
 import be.treinzoeker.nmbs.gtfs.model.Transfer;
 import be.treinzoeker.nmbs.gtfs.model.Translation;
 import be.treinzoeker.nmbs.gtfs.model.Trip;
+import be.treinzoeker.nmbs.gtfs.storage.AbstractStorage;
 import org.jetbrains.annotations.NotNull;
 import org.mapdb.DB;
 import org.mapdb.DBMaker;
@@ -19,6 +20,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Map;
 import java.util.Set;
 import java.util.zip.ZipFile;
@@ -88,5 +90,24 @@ public class NmbsGtfsFeed {
         errors.forEach(error -> logger.info(error.getMessageWithContext()));
 
         loaded = true;
+    }
+
+    public void saveToStorage(@NotNull AbstractStorage storage) throws SQLException {
+        logger.info("Starting to write GTFS feed to storage");
+        storage.startTransaction();
+
+        agency.values().forEach(storage::storeAgency);
+        calendars.values().forEach(storage::storeCalendar);
+        calendarDates.values().forEach(storage::storeCalendarDate);
+        routes.values().forEach(storage::storeRoute);
+        stopTimes.values().forEach(storage::storeStopTime);
+        stopTimeOverrides.values().forEach(storage::storeStopTimeOverride);
+        stops.values().forEach(storage::storeStop);
+        transfers.forEach(storage::storeTransfer);
+        translations.values().forEach(storage::storeTranslation);
+        trips.values().forEach(storage::storeTrip);
+
+        storage.commitAndEndTransaction();
+        logger.info("Done writing GTFS feed to storage");
     }
 }

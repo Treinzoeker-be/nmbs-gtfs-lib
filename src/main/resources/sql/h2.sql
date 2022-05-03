@@ -79,8 +79,7 @@ CREATE TABLE `stop_times` (
     `stop_headsign`         VARCHAR(255),
     `pickup_type`           SMALLINT,
     `drop_off_type`         SMALLINT,
-    `shape_dist_traveled`   INT,
-    PRIMARY KEY (`trip_id`)
+    `shape_dist_traveled`   INT
 );
 
 CREATE TABLE `stop_time_overrides` (
@@ -100,7 +99,7 @@ CREATE TABLE `transfers` (
 );
 
 CREATE TABLE `translations` (
-    `trans_id`          VARCHAR(20),
+    `trans_id`          VARCHAR(50),
     `lang`              VARCHAR(10),
     `translation`       VARCHAR(255)
 );
