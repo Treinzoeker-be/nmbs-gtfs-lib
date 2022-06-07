@@ -38,8 +38,7 @@ CREATE TABLE `calendar` (
 CREATE TABLE `calendar_dates` (
     `service_id`        VARCHAR(20),
     `date`              DATE,
-    `exception_type`    TINYINT,
-    PRIMARY KEY (`service_id`)
+    `exception_type`    TINYINT
 );
 
 CREATE TABLE `routes` (

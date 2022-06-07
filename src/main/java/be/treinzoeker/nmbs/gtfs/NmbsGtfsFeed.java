@@ -21,6 +21,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.Map;
 import java.util.Set;
 import java.util.zip.ZipFile;
@@ -32,7 +33,7 @@ public class NmbsGtfsFeed {
 
     public final Map<String, Agency> agency;
     public final Map<String, Calendar> calendars;
-    public final Map<String, CalendarDate> calendarDates;
+    public final Map<Fun.Tuple2<String, LocalDate>, CalendarDate> calendarDates;
     public final Map<String, Route> routes;
     public final Map<String, Stop> stops;
     public final Map<Fun.Tuple2<String, String>, StopTime> stopTimes;
